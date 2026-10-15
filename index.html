@@ -58,6 +58,8 @@ body.portrait #stage{width:100dvw;height:100dvh;max-height:none;aspect-ratio:aut
 .guide-review ul{margin:8px 0 2px;padding-left:20px}
 .guide-review li{margin:6px 0}
 .pearl b{color:#ffd76a}
+.whybox{background:#101a2e;border:1px solid #7b9cf0;border-radius:10px;padding:10px 12px;margin:10px 0;font-size:14px;line-height:1.55;text-align:left}
+.whybox b{color:#9db8e8}
 .btnrow{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
 .btn{background:#2c6fe0;border:none;border-radius:10px;color:#fff;font-size:16px;font-weight:700;padding:12px 18px;cursor:pointer}
 .btn:active{background:#1d4fa8}
@@ -104,7 +106,7 @@ body.portrait #stage{width:100dvw;height:100dvh;max-height:none;aspect-ratio:aut
  .q{font-size:clamp(14px,4.2vmin,17px);margin:8px 0}
  .opts{gap:6px;margin-top:8px}
  .opt{padding:9px 10px;font-size:clamp(13px,3.9vmin,15px)}
- .banner,.pearl{font-size:clamp(12.5px,3.7vmin,14px);padding:8px 10px;margin:8px 0;line-height:1.4}
+ .banner,.pearl,.whybox{font-size:clamp(12.5px,3.7vmin,14px);padding:8px 10px;margin:8px 0;line-height:1.4}
  .tipline{font-size:clamp(12.5px,3.7vmin,14px);padding:8px 10px;margin:8px 0}
  .btnrow{position:sticky;bottom:0;background:#0d1626;padding:10px 2px 4px;margin-top:8px;z-index:2}
  .btn{padding:10px 14px;font-size:clamp(14px,4.1vmin,16px)}
@@ -190,101 +192,101 @@ var PATIENTS=[
   talk:"Doctor… I can't stop coughing, and it hurts something awful when I breathe in. Fever since yesterday.",
   chart:"65F · T 38.9°C · HR 104 · RR 24 · SpO2 93% RA · PMH: none · Allergies: NKDA · Labs: WBC 14.2 · CXR: right lower lobe infiltrate",
   steps:[
-   {q:"First move?",o:["Draw blood cultures, then start empiric antibiotics promptly","Start azithromycin alone, no cultures","Wait for sputum culture before any antibiotics","Antipyretics and observe"],a:0,e:"Cultures before antibiotics — but never delay the first dose.",p:"Blood cultures BEFORE antibiotics, but never delay the first dose."},
-   {q:"Empiric antibiotic?",o:["Amoxicillin","Ciprofloxacin","Vancomycin","Nitrofurantoin"],a:0,e:"Healthy outpatient CAP → amoxicillin, doxycycline, or macrolide (IDSA).",p:"Healthy outpatient CAP: amoxicillin, doxycycline, or a macrolide per IDSA guidance."},
-   {q:"TWIST — chart update: she has COPD and took amoxicillin last month.",o:["Levofloxacin","Same amoxicillin","Nitrofurantoin","Metronidazole"],a:0,e:"Comorbidities or recent antibiotics → respiratory fluoroquinolone.",p:"CAP + comorbidities or recent antibiotics → levofloxacin (or beta-lactam + macrolide/doxy)."},
-   {q:"Day 2: Legionella urinary antigen POSITIVE. She's improving on levofloxacin.",o:["Continue levofloxacin — it covers Legionella","Switch to amoxicillin","Add vancomycin","Stop antibiotics"],a:0,e:"Respiratory FQs cover Legionella — the antigen confirms your pick.",p:"Positive Legionella antigen CONFIRMS a respiratory-FQ pick — continue the current regimen."}]},
+   {q:"First move?",o:["Draw blood cultures, then start empiric antibiotics promptly","Start azithromycin alone, no cultures","Wait for sputum culture before any antibiotics","Antipyretics and observe"],a:0,e:"Cultures before antibiotics — but never delay the first dose.",p:"Blood cultures BEFORE antibiotics, but never delay the first dose.",why:"Blood cultures drawn before antibiotics identify the pathogen and enable de-escalation, but the draw must never delay the first dose — IDSA/ATS guidance is cultures then antibiotics within the hour for suspected sepsis. Each hour of delay in severe community-acquired pneumonia increases mortality. Azithromycin alone without cultures misses bacteremic pneumococcus and forfeits susceptibility data; waiting for sputum squanders the empiric window."},
+   {q:"Empiric antibiotic?",o:["Amoxicillin","Ciprofloxacin","Vancomycin","Nitrofurantoin"],a:0,e:"Healthy outpatient CAP → amoxicillin, doxycycline, or macrolide (IDSA).",p:"Healthy outpatient CAP: amoxicillin, doxycycline, or a macrolide per IDSA guidance.",why:"Healthy-adult outpatient CAP is overwhelmingly Streptococcus pneumoniae, a beta-lactam-susceptible gram-positive diplococcus. Amoxicillin binds penicillin-binding proteins, blocking peptidoglycan cross-linking with time-dependent bactericidal killing, and achieves excellent lung parenchyma concentrations. IDSA/ATS 2019 lists amoxicillin, doxycycline, or a macrolide for healthy outpatients. Ciprofloxacin has unreliable pneumococcal activity and drives resistance; vancomycin adds nephrotoxicity without benefit; nitrofurantoin never leaves the urinary tract."},
+   {q:"TWIST — chart update: she has COPD and took amoxicillin last month.",o:["Levofloxacin","Same amoxicillin","Nitrofurantoin","Metronidazole"],a:0,e:"Comorbidities or recent antibiotics → respiratory fluoroquinolone.",p:"CAP + comorbidities or recent antibiotics → levofloxacin (or beta-lactam + macrolide/doxy).",why:"COPD plus recent beta-lactam exposure raises the risk of drug-resistant pneumococcus, Haemophilus influenzae, and Moraxella — organisms a plain aminopenicillin may miss. Levofloxacin inhibits DNA gyrase and topoisomerase IV with concentration-dependent killing, penetrates lung tissue and alveolar macrophages superbly, and covers typical plus atypical pathogens in one agent. IDSA/ATS endorses respiratory fluoroquinolone monotherapy for CAP with comorbidities. Repeating amoxicillin after recent exposure selects for resistance; nitrofurantoin and metronidazole achieve no meaningful lung levels."},
+   {q:"Day 2: Legionella urinary antigen POSITIVE. She's improving on levofloxacin.",o:["Continue levofloxacin — it covers Legionella","Switch to amoxicillin","Add vancomycin","Stop antibiotics"],a:0,e:"Respiratory FQs cover Legionella — the antigen confirms your pick.",p:"Positive Legionella antigen CONFIRMS a respiratory-FQ pick — continue the current regimen.",why:"Levofloxacin covers Legionella pneumophila, an intracellular pathogen that beta-lactams cannot touch because they cannot reach therapeutic intracellular concentrations — fluoroquinolones concentrate inside alveolar macrophages where Legionella replicates. A positive urinary antigen confirms the diagnosis and validates the empiric choice, so switching to amoxicillin would abandon atypical coverage mid-course. Adding vancomycin contributes only nephrotoxicity. The rule: a positive Legionella antigen on an effective regimen means continue, not switch."}]},
  {id:"p1",guide:"cystitis",name:"Jess, 24",title:"burning pee",x:1400,
   talk:"It burns every time I go… and I keep feeling like I need to go again. No fever though.",
   chart:"24F · afebrile · vitals normal · PMH: none · Allergies: SULFA (rash) · Labs: UA leuk est +, nitrites +",
   steps:[
-   {q:"First move?",o:["Send urine culture, then start empiric therapy","Start ciprofloxacin now, no culture","Reassure — no treatment needed","Order a CT scan"],a:0,e:"Urine culture before therapy guides you if she fails treatment.",p:"Urine culture before therapy in cystitis — your backup plan if she fails."},
-   {q:"Empiric antibiotic? (Note the sulfa allergy)",o:["Nitrofurantoin","Trimethoprim-sulfamethoxazole","Amoxicillin","Azithromycin"],a:0,e:"Sulfa allergy rules out TMP-SMX; nitrofurantoin is first-line for cystitis.",p:"Uncomplicated cystitis → nitrofurantoin or fosfomycin. Always check allergies first."},
-   {q:"TWIST — day 2 phone call: 'I feel way better, can I stop the pills?'",o:["Counsel: finish all 5 days","Yes, stop now","Switch to cranberry juice","Double the dose to finish faster"],a:0,e:"Stopping early breeds resistance — counsel completion.",p:"Feeling better ≠ cured. Counsel completion — stopping early breeds resistance."},
-   {q:"Urine culture: E. coli, nitrofurantoin-S.",o:["Continue nitrofurantoin, 5 days total","Switch to ciprofloxacin to be safe","Stop — the culture will clear itself","Add metronidazole"],a:0,e:"The culture confirms your narrow pick — finish it.",p:"Culture confirms the pick — stay narrow and finish."}]},
+   {q:"First move?",o:["Send urine culture, then start empiric therapy","Start ciprofloxacin now, no culture","Reassure — no treatment needed","Order a CT scan"],a:0,e:"Urine culture before therapy guides you if she fails treatment.",p:"Urine culture before therapy in cystitis — your backup plan if she fails.",why:"A urine culture before therapy captures the organism and susceptibilities that guide you if she fails empiric treatment, which happens in a meaningful minority of cystitis cases. Cystitis is a clinical diagnosis, but treating blindly with ciprofloxacin risks missing resistant E. coli and forfeits your backup plan. Reassurance ignores documented bacteriuria with symptoms; a CT scan has no role in uncomplicated cystitis."},
+   {q:"Empiric antibiotic? (Note the sulfa allergy)",o:["Nitrofurantoin","Trimethoprim-sulfamethoxazole","Amoxicillin","Azithromycin"],a:0,e:"Sulfa allergy rules out TMP-SMX; nitrofurantoin is first-line for cystitis.",p:"Uncomplicated cystitis → nitrofurantoin or fosfomycin. Always check allergies first.",why:"Nitrofurantoin is reduced by bacterial flavoproteins into reactive intermediates that damage bacterial DNA, achieving bactericidal urinary concentrations while systemic levels stay negligible. IDSA lists it first-line for uncomplicated cystitis. Her sulfa allergy eliminates trimethoprim-sulfamethoxazole, where cross-reactivity can provoke serious hypersensitivity. Amoxicillin faces high E. coli resistance rates; azithromycin has no useful gram-negative urinary activity."},
+   {q:"TWIST — day 2 phone call: 'I feel way better, can I stop the pills?'",o:["Counsel: finish all 5 days","Yes, stop now","Switch to cranberry juice","Double the dose to finish faster"],a:0,e:"Stopping early breeds resistance — counsel completion.",p:"Feeling better ≠ cured. Counsel completion — stopping early breeds resistance.",why:"Symptom resolution at 48 hours reflects falling bacterial load, not eradication — stopping early leaves the most resistant subpopulation alive to repopulate. IDSA specifies 5 days of nitrofurantoin for uncomplicated cystitis; shorter courses increase relapse and resistance. Cranberry products are not treatment. Counseling completion is antimicrobial stewardship at the bedside."},
+   {q:"Urine culture: E. coli, nitrofurantoin-S.",o:["Continue nitrofurantoin, 5 days total","Switch to ciprofloxacin to be safe","Stop — the culture will clear itself","Add metronidazole"],a:0,e:"The culture confirms your narrow pick — finish it.",p:"Culture confirms the pick — stay narrow and finish.",why:"The culture confirms E. coli susceptible to your narrow empiric pick — this is de-escalation's ideal outcome: stay on the narrowest effective agent. Switching to ciprofloxacin broadens coverage without benefit, adding collateral damage in the form of C. difficile risk and resistance pressure. Metronidazole has no activity against aerobic gram-negatives; stopping therapy invites relapse."}]},
  {id:"p2",guide:"cellulitis",name:"Dre, 45",title:"hot red leg",x:2200,
   talk:"My leg blew up overnight — red, hot, hurts to touch. No pus or anything.",
   chart:"45M · T 38.2°C · nonpurulent leg erythema · PMH: none · Allergies: NKDA · Labs: WBC 12.1",
   steps:[
-   {q:"First move?",o:["Blood cultures (febrile) + start empiric beta-lactam","Incise and drain it","Start TMP-SMX","Wait and see"],a:0,e:"Nonpurulent cellulitis = streptococci until proven otherwise.",p:"Nonpurulent cellulitis = strep until proven otherwise → beta-lactam."},
-   {q:"Empiric antibiotic?",o:["Cephalexin","Trimethoprim-sulfamethoxazole","Doxycycline","Azithromycin"],a:0,e:"Nonpurulent cellulitis without MRSA risk = strep → cephalexin.",p:"Nonpurulent cellulitis + no MRSA risk → beta-lactam for strep."},
-   {q:"TWIST — he remembers: amoxicillin once closed his throat. Anaphylaxis.",o:["Clindamycin","Cefazolin — cephalosporins are fine","Aztreonam","High-dose amoxicillin"],a:0,e:"True anaphylaxis → avoid penicillins AND cephalosporins. Clindamycin per IDSA; aztreonam is gram-negative only.",p:"Penicillin anaphylaxis → avoid cephalosporins too. Clindamycin for cellulitis."},
-   {q:"Day 3: erythema receding, afebrile, cultures negative.",o:["5 days total, then stop","14 days of IV therapy","Switch to vancomycin to be safe","Continue until the leg looks perfect"],a:0,e:"IDSA: 5 days for uncomplicated cellulitis if improving.",p:"Uncomplicated cellulitis = 5 days if improving. Longer courses breed resistance."}]}],
+   {q:"First move?",o:["Blood cultures (febrile) + start empiric beta-lactam","Incise and drain it","Start TMP-SMX","Wait and see"],a:0,e:"Nonpurulent cellulitis = streptococci until proven otherwise.",p:"Nonpurulent cellulitis = strep until proven otherwise → beta-lactam.",why:"Fever with spreading erythema signals possible bacteremia, so blood cultures precede antibiotics; nonpurulent cellulitis is beta-hemolytic streptococci (S. pyogenes) until proven otherwise. Empiric beta-lactam therapy starts immediately after cultures. Incision and drainage is for purulent collections, which he lacks; trimethoprim-sulfamethoxazole misses streptococci; observation risks rapid progression."},
+   {q:"Empiric antibiotic?",o:["Cephalexin","Trimethoprim-sulfamethoxazole","Doxycycline","Azithromycin"],a:0,e:"Nonpurulent cellulitis without MRSA risk = strep → cephalexin.",p:"Nonpurulent cellulitis + no MRSA risk → beta-lactam for strep.",why:"Cephalexin binds streptococcal penicillin-binding proteins with bactericidal, time-dependent killing and achieves excellent skin and soft-tissue concentrations. IDSA recommends a beta-lactam for nonpurulent cellulitis without MRSA risk factors. Trimethoprim-sulfamethoxazole and doxycycline are MRSA-active agents with unreliable streptococcal coverage — using them for strep cellulitis is a classic coverage gap that fails patients."},
+   {q:"TWIST — he remembers: amoxicillin once closed his throat. Anaphylaxis.",o:["Clindamycin","Cefazolin — cephalosporins are fine","Aztreonam","High-dose amoxicillin"],a:0,e:"True anaphylaxis → avoid penicillins AND cephalosporins. Clindamycin per IDSA; aztreonam is gram-negative only.",p:"Penicillin anaphylaxis → avoid cephalosporins too. Clindamycin for cellulitis.",why:"True IgE-mediated anaphylaxis to amoxicillin contraindicates all penicillins and, by shared beta-lactam ring cross-reactivity risk, cephalosporins as well. Clindamycin inhibits 50S protein synthesis, covers streptococci plus MSSA and anaerobes, penetrates skin superbly, and is IDSA-endorsed for beta-lactam-allergic cellulitis. Aztreonam covers gram-negatives only and would leave streptococci untouched; high-dose amoxicillin after anaphylaxis risks a fatal rechallenge."},
+   {q:"Day 3: erythema receding, afebrile, cultures negative.",o:["5 days total, then stop","14 days of IV therapy","Switch to vancomycin to be safe","Continue until the leg looks perfect"],a:0,e:"IDSA: 5 days for uncomplicated cellulitis if improving.",p:"Uncomplicated cellulitis = 5 days if improving. Longer courses breed resistance.",why:"IDSA recommends 5 days for uncomplicated cellulitis when the patient is improving — extending the course does not improve cure rates but increases resistance pressure and C. difficile risk. Fourteen days of IV therapy is for complicated or bacteremic disease, which he does not have. Treat the trajectory, not the residual redness."}]}],
 /* ---- WING 1 : GENERAL WARD ---- */
 [{id:"p0",guide:"pyelo",name:"Rosa, 62",title:"flank pain & fever",x:500,
   talk:"It started as burning when I pee, but now my back is killing me and I've got shaking chills.",
   chart:"62F · T 38.5°C · CVA tenderness · PMH: hypertension · Allergies: NKDA · Labs: WBC 15.0 · UA: WBC too numerous, nitrites +",
   steps:[
-   {q:"First move?",o:["Blood AND urine cultures, then empiric therapy","Nitrofurantoin right now","Cranberry + hydration","Wait for culture results"],a:0,e:"Pyelonephritis is systemic → blood + urine cultures before antibiotics.",p:"Pyelo = systemic → blood AND urine cultures before antibiotics."},
-   {q:"Empiric antibiotic?",o:["Ciprofloxacin","Nitrofurantoin","Amoxicillin","Azithromycin"],a:0,e:"Stable acute pyelonephritis → ciprofloxacin or levofloxacin (IDSA).",p:"Stable acute pyelonephritis → ciprofloxacin or levofloxacin."},
-   {q:"TWIST — med list: calcium + iron every morning with breakfast.",o:["Counsel: cipro 2h before / 6h after the cations","Take cipro with the supplements","Switch to nitrofurantoin","Stop the supplements forever"],a:0,e:"Cations chelate fluoroquinolones in the gut — separate dosing.",p:"Separate fluoroquinolones from cations: 2h before or 6h after."},
-   {q:"Cultures: E. coli, cipro-S. Blood cultures POSITIVE.",o:["Continue cipro — nitrofurantoin never for tissue/bloodstream","De-escalate to nitrofurantoin","Add metronidazole","Stop — she feels better"],a:0,e:"Nitrofurantoin has no kidney tissue or blood levels — never for pyelo/bacteremia.",p:"Nitrofurantoin = bladder ONLY. Never for pyelonephritis or bacteremia."}]},
+   {q:"First move?",o:["Blood AND urine cultures, then empiric therapy","Nitrofurantoin right now","Cranberry + hydration","Wait for culture results"],a:0,e:"Pyelonephritis is systemic → blood + urine cultures before antibiotics.",p:"Pyelo = systemic → blood AND urine cultures before antibiotics.",why:"Pyelonephritis is tissue-invasive with bacteremia in roughly a quarter of cases, so both blood and urine cultures precede antibiotics — the bloodstream isolate may differ in susceptibilities and changes duration decisions. Nitrofurantoin achieves no renal parenchyma or serum levels, making it a dangerous trap here despite working for cystitis. Cranberry and hydration are not therapy for febrile upper-tract infection."},
+   {q:"Empiric antibiotic?",o:["Ciprofloxacin","Nitrofurantoin","Amoxicillin","Azithromycin"],a:0,e:"Stable acute pyelonephritis → ciprofloxacin or levofloxacin (IDSA).",p:"Stable acute pyelonephritis → ciprofloxacin or levofloxacin.",why:"Ciprofloxacin inhibits bacterial DNA gyrase and topoisomerase IV with concentration-dependent bactericidal killing, and it concentrates superbly in renal parenchyma and urine while covering E. coli including many resistant strains. IDSA endorses ciprofloxacin or levofloxacin for acute uncomplicated pyelonephritis. Nitrofurantoin cannot treat tissue infection; amoxicillin faces high resistance; azithromycin lacks gram-negative activity."},
+   {q:"TWIST — med list: calcium + iron every morning with breakfast.",o:["Counsel: cipro 2h before / 6h after the cations","Take cipro with the supplements","Switch to nitrofurantoin","Stop the supplements forever"],a:0,e:"Cations chelate fluoroquinolones in the gut — separate dosing.",p:"Separate fluoroquinolones from cations: 2h before or 6h after.",why:"Divalent and trivalent cations — calcium, iron, magnesium, aluminum — chelate fluoroquinolones in the gut lumen, forming insoluble complexes that cut absorption by 30 to 50 percent. Subtherapeutic levels mean treatment failure and resistance selection. Dosing ciprofloxacin 2 hours before or 6 hours after the supplements preserves absorption; taking them together is a pharmacokinetic own-goal."},
+   {q:"Cultures: E. coli, cipro-S. Blood cultures POSITIVE.",o:["Continue cipro — nitrofurantoin never for tissue/bloodstream","De-escalate to nitrofurantoin","Add metronidazole","Stop — she feels better"],a:0,e:"Nitrofurantoin has no kidney tissue or blood levels — never for pyelo/bacteremia.",p:"Nitrofurantoin = bladder ONLY. Never for pyelonephritis or bacteremia.",why:"Positive blood cultures prove tissue and bloodstream invasion — nitrofurantoin is filtered into urine and never achieves serum or parenchymal levels, so de-escalating to it would leave bacteremia untreated. Continuing ciprofloxacin, to which the isolate is susceptible and which penetrates both kidney tissue and blood, is the correct narrow-but-adequate choice. Feeling better does not shorten bacteremia therapy."}]},
  {id:"p1",guide:"dfi",name:"Sam, 58",title:"diabetic foot ulcer",x:1400,
   talk:"This sore on my foot won't heal, and now the redness is spreading up my ankle. It smells bad.",
   chart:"58M · T 38.4°C · HR 102 · spreading foot erythema, foul odor · PMH: type 2 diabetes (A1c 9.8) · Allergies: NKDA · Labs: WBC 13.8 · glucose 268 · X-ray: no gas",
   steps:[
-   {q:"First move?",o:["Deep tissue cultures + empiric broad therapy (systemic signs)","Superficial swab only","Amoxicillin alone","Warm soaks and observe"],a:0,e:"Infected diabetic foot + systemic signs → deep cultures + broad empiric cover.",p:"Diabetic foot + systemic signs → deep tissue cultures + broad empiric cover."},
-   {q:"Empiric antibiotics?",o:["Piperacillin-tazobactam + vancomycin","Amoxicillin alone","Azithromycin","Nitrofurantoin"],a:0,e:"Severe diabetic foot = MRSA + Pseudomonas risk → broad cover.",p:"Severe diabetic foot infection → cover MRSA + Pseudomonas empirically."},
-   {q:"TWIST — creatinine 1.9 (baseline 1.0). Acute kidney injury.",o:["Renally dose vancomycin + monitor levels; avoid stacking nephrotoxins","Standard doses — kidneys will cope","Add gentamicin for synergy","Stop all antibiotics"],a:0,e:"AKI on vancomycin → renal dosing + level monitoring; don't stack nephrotoxins.",p:"AKI on vanco → renally dose, monitor levels. Never stack nephrotoxins casually."},
-   {q:"Deep cultures: MSSA only.",o:["De-escalate to cefazolin","Continue pip-tazo + vanco for 14 days","Switch to oral ciprofloxacin","Add metronidazole"],a:0,e:"MSSA → beta-lactams beat vancomycin. De-escalate.",p:"MSSA → nafcillin/cefazolin BEAT vancomycin. De-escalate."}]},
+   {q:"First move?",o:["Deep tissue cultures + empiric broad therapy (systemic signs)","Superficial swab only","Amoxicillin alone","Warm soaks and observe"],a:0,e:"Infected diabetic foot + systemic signs → deep cultures + broad empiric cover.",p:"Diabetic foot + systemic signs → deep tissue cultures + broad empiric cover.",why:"A diabetic foot infection with systemic signs is limb-threatening and polymicrobial — MRSA, Pseudomonas, anaerobes, and gram-negatives all possible. Superficial swabs grow colonizers; deep tissue or bone specimens are the microbiologic truth. IDSA diabetic foot guidance demands deep cultures plus immediate broad empiric cover for severe infection; narrow or delayed therapy risks amputation."},
+   {q:"Empiric antibiotics?",o:["Piperacillin-tazobactam + vancomycin","Amoxicillin alone","Azithromycin","Nitrofurantoin"],a:0,e:"Severe diabetic foot = MRSA + Pseudomonas risk → broad cover.",p:"Severe diabetic foot infection → cover MRSA + Pseudomonas empirically.",why:"Piperacillin-tazobactam pairs an anti-pseudomonal penicillin with a beta-lactamase inhibitor, covering Pseudomonas, enteric gram-negatives, and anaerobes; vancomycin adds the MRSA backbone that beta-lactams cannot provide against mecA-mediated resistance. Severe diabetic foot infection per IDSA/IWGDF requires empiric MRSA plus Pseudomonas coverage. Amoxicillin alone misses both; azithromycin and nitrofurantoin have no relevant spectrum here."},
+   {q:"TWIST — creatinine 1.9 (baseline 1.0). Acute kidney injury.",o:["Renally dose vancomycin + monitor levels; avoid stacking nephrotoxins","Standard doses — kidneys will cope","Add gentamicin for synergy","Stop all antibiotics"],a:0,e:"AKI on vancomycin → renal dosing + level monitoring; don't stack nephrotoxins.",p:"AKI on vanco → renally dose, monitor levels. Never stack nephrotoxins casually.",why:"Vancomycin is nephrotoxic, and the piperacillin-tazobactam combination amplifies acute kidney injury risk — with creatinine nearly doubled, standard dosing guarantees accumulation. Renal dose adjustment with AUC-guided therapeutic monitoring keeps efficacy while limiting further renal injury, and stacking an aminoglycoside would add a second nephrotoxin plus ototoxicity. Monitor levels and keep the course as short as cultures allow."},
+   {q:"Deep cultures: MSSA only.",o:["De-escalate to cefazolin","Continue pip-tazo + vanco for 14 days","Switch to oral ciprofloxacin","Add metronidazole"],a:0,e:"MSSA → beta-lactams beat vancomycin. De-escalate.",p:"MSSA → nafcillin/cefazolin BEAT vancomycin. De-escalate.",why:"MSSA means beta-lactams are superior to vancomycin — nafcillin and cefazolin clear MSSA bacteremia faster with lower mortality than vancomycin in every comparative study. With only MSSA documented, continuing piperacillin-tazobactam plus vancomycin is excess spectrum driving resistance and toxicity. De-escalate to cefazolin; oral ciprofloxacin has unreliable staphylococcal activity and is not a de-escalation target."}]},
  {id:"p2",guide:"sepsis",name:"Mr. Chen, 70",title:"septic post-op",x:2200,
   talk:"(nurse) 70, post-op day 4, spiking fevers, hypotensive, new infiltrate. He looks septic.",
   chart:"70M · T 39.1°C · BP 88/54 · HR 118 · PMH: colectomy 4 days ago · Allergies: NKDA · Labs: WBC 18.2 · lactate 3.8 · creatinine 1.8 (baseline 1.1)",
   steps:[
-   {q:"First move?",o:["Blood cultures x2 + lactate, broad empiric therapy NOW","Wait for sputum culture","Normal saline only","CT scan first"],a:0,e:"Sepsis = cultures + broad-spectrum within the hour.",p:"Sepsis: cultures + broad-spectrum within the hour. Every hour counts."},
-   {q:"Empiric weapons? (Pseudomonas possible)",o:["Piperacillin-tazobactam + tobramycin","Tobramycin alone","Metronidazole + azithromycin","Oral amoxicillin"],a:0,e:"Septic + possible Pseudomonas → anti-pseudomonal beta-lactam + aminoglycoside synergy.",p:"Septic + Pseudomonas risk → anti-pseudomonal beta-lactam ± aminoglycoside."},
-   {q:"TWIST — CrCl 28 mL/min.",o:["Extended-interval AG dosing + monitor levels; keep the course short","Standard doses","Add vancomycin for good measure","Skip level monitoring"],a:0,e:"Renal impairment → extend the interval, monitor levels, keep it short.",p:"CrCl <30 on aminoglycosides → extend interval, monitor levels, keep it short."},
-   {q:"Cultures: E. coli, pip-tazo susceptible. Afebrile 48 hours.",o:["Stop tobramycin, continue pip-tazo alone","Continue both for 14 days","Switch to oral ciprofloxacin now","Add amikacin"],a:0,e:"The aminoglycoside was empiric synergy — de-escalate once cultures narrow therapy.",p:"Discontinue empiric aminoglycoside synergy once susceptibilities permit narrower therapy."}]}],
+   {q:"First move?",o:["Blood cultures x2 + lactate, broad empiric therapy NOW","Wait for sputum culture","Normal saline only","CT scan first"],a:0,e:"Sepsis = cultures + broad-spectrum within the hour.",p:"Sepsis: cultures + broad-spectrum within the hour. Every hour counts.",why:"The sepsis bundle is uncompromising: two sets of blood cultures and lactate first, then broad-spectrum antibiotics within the hour — each hour of delay measurably increases mortality. Lactate stratifies severity and guides resuscitation. Waiting for sputum cultures or CT imaging before antibiotics trades a diagnostic nicety for the patient's life; fluids alone do not kill bacteria."},
+   {q:"Empiric weapons? (Pseudomonas possible)",o:["Piperacillin-tazobactam + tobramycin","Tobramycin alone","Metronidazole + azithromycin","Oral amoxicillin"],a:0,e:"Septic + possible Pseudomonas → anti-pseudomonal beta-lactam + aminoglycoside synergy.",p:"Septic + Pseudomonas risk → anti-pseudomonal beta-lactam ± aminoglycoside.",why:"Post-operative sepsis carries Pseudomonas risk, demanding an anti-pseudomonal beta-lactam backbone; the aminoglycoside adds concentration-dependent bactericidal synergy and covers resistant gram-negatives during the critical early hours. Tobramycin is preferred among aminoglycosides for Pseudomonas. Aminoglycoside monotherapy is inadequate for sepsis; metronidazole plus azithromycin has no Pseudomonas activity; oral amoxicillin in septic shock is indefensible."},
+   {q:"TWIST — CrCl 28 mL/min.",o:["Extended-interval AG dosing + monitor levels; keep the course short","Standard doses","Add vancomycin for good measure","Skip level monitoring"],a:0,e:"Renal impairment → extend the interval, monitor levels, keep it short.",p:"CrCl <30 on aminoglycosides → extend interval, monitor levels, keep it short.",why:"Aminoglycosides are nephrotoxic and ototoxic with purely renal clearance — at CrCl 28, standard interval dosing accumulates to toxic levels, and ototoxicity can be irreversible. Extended-interval dosing with peak and trough monitoring exploits their concentration-dependent killing and post-antibiotic effect while allowing renal washout between doses. Keep the course short and stop the aminoglycoside the moment cultures permit."},
+   {q:"Cultures: E. coli, pip-tazo susceptible. Afebrile 48 hours.",o:["Stop tobramycin, continue pip-tazo alone","Continue both for 14 days","Switch to oral ciprofloxacin now","Add amikacin"],a:0,e:"The aminoglycoside was empiric synergy — de-escalate once cultures narrow therapy.",p:"Discontinue empiric aminoglycoside synergy once susceptibilities permit narrower therapy.",why:"The aminoglycoside was empiric synergy for possible resistant Pseudomonas; cultures grew susceptible E. coli, which piperacillin-tazobactam kills definitively alone. Continuing tobramycin adds nephrotoxicity and ototoxicity with zero incremental benefit — de-escalation is the central commandment of sepsis stewardship. Fourteen days of dual therapy would be toxicity without purpose."}]}],
 /* ---- WING 2 : ICU ---- */
 [{id:"p0",guide:"mrsa-bacteremia",name:"Marcus, 55",title:"crashing — clusters on Gram stain",x:500,
   talk:"(nurse) 55, hypotensive, rigors. Gram stain just called: gram-positive cocci in clusters, 2 of 2 bottles.",
   chart:"55M · BP 82/50 · T 39.4°C · PMH: MRSA colonization · Allergies: NKDA · Labs: WBC 19.5 · lactate 4.2",
   steps:[
-   {q:"First move?",o:["Blood cultures already drawn — start empiric vancomycin NOW","Wait for susceptibilities","Nafcillin","Ceftriaxone"],a:0,e:"Septic + clusters + MRSA risk → empiric vancomycin without delay.",p:"Septic + clusters + MRSA risk → empiric vancomycin without delay."},
-   {q:"Vancomycin dosing?",o:["Weight-based loading + maintenance with level monitoring","Fixed 1g q12h for everyone","Oral vancomycin","Daptomycin first-line here"],a:0,e:"Weight-based dosing + AUC/level monitoring — one dose does not fit all.",p:"Vancomycin: weight-based + monitor levels. One dose does not fit all."},
-   {q:"TWIST — mid-infusion: diffuse red flushing, itching, BP stable.",o:["Slow the infusion — red man syndrome","Stop vancomycin forever — anaphylaxis","Push antihistamine, keep the rate","Switch to daptomycin now"],a:0,e:"Rate-related histamine flush with stable vitals — slow it, don't abandon it.",p:"Red man = rate-related histamine flush, NOT allergy. Slow the drip."},
-   {q:"Cultures: Enterococcus faecium, vancomycin-RESISTANT (VRE).",o:["Switch to daptomycin — vancomycin will fail","Increase the vancomycin dose","Add gentamicin to vancomycin","Continue vancomycin"],a:0,e:"VRE = target change; vancomycin cannot work at any dose. Daptomycin for bacteremia (never pneumonia — surfactant).",p:"VRE bacteremia → vancomycin is DEAD. Daptomycin (never lungs)."}]},
+   {q:"First move?",o:["Blood cultures already drawn — start empiric vancomycin NOW","Wait for susceptibilities","Nafcillin","Ceftriaxone"],a:0,e:"Septic + clusters + MRSA risk → empiric vancomycin without delay.",p:"Septic + clusters + MRSA risk → empiric vancomycin without delay.",why:"Septic shock with gram-positive cocci in clusters plus known MRSA colonization is MRSA bacteremia until proven otherwise — vancomycin starts immediately after cultures, not after susceptibilities. Vancomycin binds D-ala-D-ala, blocking cell-wall synthesis in staphylococci. Nafcillin cannot bind PBP2a encoded by mecA and will fail; ceftriaxone has no MRSA activity; waiting for susceptibilities wastes the golden hour."},
+   {q:"Vancomycin dosing?",o:["Weight-based loading + maintenance with level monitoring","Fixed 1g q12h for everyone","Oral vancomycin","Daptomycin first-line here"],a:0,e:"Weight-based dosing + AUC/level monitoring — one dose does not fit all.",p:"Vancomycin: weight-based + monitor levels. One dose does not fit all.",why:"Vancomycin pharmacokinetics scale with weight and renal function — a fixed 1 gram every 12 hours underdoses large patients into treatment failure and overdoses small or renally impaired patients into nephrotoxicity. AUC-guided dosing with therapeutic monitoring, per IDSA, keeps the drug in the effective window. Oral vancomycin is not absorbed and cannot treat bacteremia; that route is strictly a luminal C. difficile therapy."},
+   {q:"TWIST — mid-infusion: diffuse red flushing, itching, BP stable.",o:["Slow the infusion — red man syndrome","Stop vancomycin forever — anaphylaxis","Push antihistamine, keep the rate","Switch to daptomycin now"],a:0,e:"Rate-related histamine flush with stable vitals — slow it, don't abandon it.",p:"Red man = rate-related histamine flush, NOT allergy. Slow the drip.",why:"Diffuse flushing and itching with stable blood pressure during vancomycin infusion is red man syndrome — rate-related histamine release, not IgE-mediated anaphylaxis. Slowing the infusion and considering antihistamine premedication resolves it; abandoning vancomycin surrenders your MRSA backbone over a manageable infusion reaction. Switching to daptomycin here is premature escalation for a non-allergic event."},
+   {q:"Cultures: Enterococcus faecium, vancomycin-RESISTANT (VRE).",o:["Switch to daptomycin — vancomycin will fail","Increase the vancomycin dose","Add gentamicin to vancomycin","Continue vancomycin"],a:0,e:"VRE = target change; vancomycin cannot work at any dose. Daptomycin for bacteremia (never pneumonia — surfactant).",p:"VRE bacteremia → vancomycin is DEAD. Daptomycin (never lungs).",why:"The vanA/vanB gene cluster rewrites the target from D-ala-D-ala to D-ala-D-lac — vancomycin cannot bind at any dose, so dose escalation is futile. Daptomycin is a cyclic lipopeptide that depolarizes the bacterial membrane with rapid bactericidal killing, and it is the agent of choice for VRE bacteremia. It is inactivated by pulmonary surfactant and must never be used for pneumonia; adding gentamicin to a dead drug adds toxicity without synergy."}]},
  {id:"p1",guide:"meningitis",name:"Aisha, 22",title:"fever, stiff neck",x:1400,
   talk:"(nurse) Fever, brutal headache, neck stiffness — and she's getting confused.",
   chart:"22F · T 39.6°C · altered, nuchal rigidity · PMH: none · Allergies: NKDA · Labs: WBC 17.0",
   steps:[
-   {q:"First move?",o:["Blood cultures x2 + empiric antibiotics immediately (don't delay for LP)","Wait for lumbar puncture first","CT head, then decide","Ibuprofen and observe"],a:0,e:"Suspected bacterial meningitis: cultures + antibiotics FIRST — LP must not delay therapy.",p:"Bacterial meningitis: blood cultures + antibiotics FIRST. LP must not delay therapy."},
-   {q:"Empiric antibiotics?",o:["Ceftriaxone + vancomycin","Amoxicillin alone","Azithromycin","Ciprofloxacin"],a:0,e:"Adult empiric meningitis = ceftriaxone + vancomycin.",p:"Adult meningitis empiric = ceftriaxone + vancomycin."},
-   {q:"TWIST — correction: she is 67, not 22.",o:["Add ampicillin for Listeria","Same regimen","Add metronidazole","Remove vancomycin"],a:0,e:"Age >50 years confers Listeria risk — add ampicillin per IDSA guidance.",p:"Meningitis + age >50 → ADD AMPICILLIN for Listeria."},
-   {q:"LP confirms bacterial meningitis. Dexamethasone?",o:["With or before the first antibiotic dose","After cultures return","On day 3","Never in meningitis"],a:0,e:"Steroids blunt inflammatory injury — give with or before the first dose.",p:"Dexamethasone: WITH or BEFORE the first antibiotic dose."}]},
+   {q:"First move?",o:["Blood cultures x2 + empiric antibiotics immediately (don't delay for LP)","Wait for lumbar puncture first","CT head, then decide","Ibuprofen and observe"],a:0,e:"Suspected bacterial meningitis: cultures + antibiotics FIRST — LP must not delay therapy.",p:"Bacterial meningitis: blood cultures + antibiotics FIRST. LP must not delay therapy.",why:"Bacterial meningitis kills in hours — blood cultures and empiric antibiotics come first, and the lumbar puncture must never delay therapy. Every guideline is explicit: treat on suspicion, confirm when safe. Waiting for the tap or for CT imaging before antibiotics trades diagnostic elegance for brain injury and death; ibuprofen does nothing against bacterial replication in the subarachnoid space."},
+   {q:"Empiric antibiotics?",o:["Ceftriaxone + vancomycin","Amoxicillin alone","Azithromycin","Ciprofloxacin"],a:0,e:"Adult empiric meningitis = ceftriaxone + vancomycin.",p:"Adult meningitis empiric = ceftriaxone + vancomycin.",why:"Ceftriaxone is a third-generation cephalosporin that crosses inflamed meninges to bactericidal CSF concentrations, covering pneumococcus and meningococcus; vancomycin covers penicillin-resistant pneumococcus until susceptibilities return. Adult empiric meningitis therapy per IDSA is exactly this pair. Amoxicillin alone misses resistant pneumococcus; azithromycin and ciprofloxacin do not reliably achieve bactericidal CSF levels."},
+   {q:"TWIST — correction: she is 67, not 22.",o:["Add ampicillin for Listeria","Same regimen","Add metronidazole","Remove vancomycin"],a:0,e:"Age >50 years confers Listeria risk — add ampicillin per IDSA guidance.",p:"Meningitis + age >50 → ADD AMPICILLIN for Listeria.",why:"Age over 50 — like neonatal age or immunocompromise — confers Listeria monocytogenes risk, and ceftriaxone has no activity against Listeria. Ampicillin, an aminopenicillin with excellent CSF penetration, is bactericidal for Listeria and is mandated by IDSA as the add-on in these risk groups. Omitting it leaves a fatal coverage gap; metronidazole adds nothing against Listeria."},
+   {q:"LP confirms bacterial meningitis. Dexamethasone?",o:["With or before the first antibiotic dose","After cultures return","On day 3","Never in meningitis"],a:0,e:"Steroids blunt inflammatory injury — give with or before the first dose.",p:"Dexamethasone: WITH or BEFORE the first antibiotic dose.",why:"Bacterial lysis floods the subarachnoid space with inflammatory mediators, driving cerebral edema, hearing loss, and neurologic injury. Dexamethasone blunts this inflammatory cascade, but only when given with or before the first antibiotic dose — afterward, the inflammatory die is cast. Trials show mortality and morbidity benefit in pneumococcal meningitis with this timing; day-3 steroids are theater."}]},
  {id:"p2",guide:"iai",name:"Leo, 50",title:"perforated diverticulitis",x:2200,
   talk:"(surgeon) 50, perforated diverticulitis, peritonitis, heading to the OR. He needs antibiotics now.",
   chart:"50M · T 38.8°C · rigid abdomen · PMH: none · Allergies: NKDA · Labs: WBC 16.4 · lactate 3.1",
   steps:[
-   {q:"First move?",o:["Blood cultures + empiric gram-negative + anaerobe cover","Metronidazole alone","Wait for OR cultures","Oral vancomycin"],a:0,e:"Intra-abdominal sepsis = gram-negatives + anaerobes, covered before the OR.",p:"Intra-abdominal sepsis = gram-negatives + anaerobes before the OR."},
-   {q:"Empiric weapons?",o:["Ceftriaxone + metronidazole","Metronidazole alone","Azithromycin + doxycycline","Oral vancomycin"],a:0,e:"Intra-abdominal sepsis requires gram-negative plus anaerobe coverage — e.g., ceftriaxone plus metronidazole.",p:"Intra-abdominal sepsis → ceftriaxone + metronidazole."},
-   {q:"TWIST — he drinks daily and won't abstain.",o:["Warn firmly: disulfiram-like reaction — no alcohol during + 72h after","It's a minor interaction","Switch to ciprofloxacin","Double the metronidazole"],a:0,e:"Disulfiram-like reaction: violent nausea, flushing, hypotension.",p:"Metronidazole + alcohol = disulfiram-like misery. No alcohol during + 48–72h after."},
-   {q:"OR cultures: Bacteroides fragilis + E. coli (ceftriaxone-S).",o:["Continue both — both pathogens need their coverage","Stop metronidazole now","Switch to oral azithromycin","Add vancomycin"],a:0,e:"Bacteroides needs its assassin; the regimen is already appropriately narrow.",p:"Continue targeted therapy against documented pathogens."}]}],
+   {q:"First move?",o:["Blood cultures + empiric gram-negative + anaerobe cover","Metronidazole alone","Wait for OR cultures","Oral vancomycin"],a:0,e:"Intra-abdominal sepsis = gram-negatives + anaerobes, covered before the OR.",p:"Intra-abdominal sepsis = gram-negatives + anaerobes before the OR.",why:"Perforated diverticulitis with peritonitis is polymicrobial — E. coli, Klebsiella, Bacteroides, enterococci — and demands source control plus antibiotics covering gram-negatives and anaerobes before the operating room. Blood cultures precede therapy. Metronidazole alone leaves gram-negatives untouched; waiting for operative cultures delays the only therapy that works before source control."},
+   {q:"Empiric weapons?",o:["Ceftriaxone + metronidazole","Metronidazole alone","Azithromycin + doxycycline","Oral vancomycin"],a:0,e:"Intra-abdominal sepsis requires gram-negative plus anaerobe coverage — e.g., ceftriaxone plus metronidazole.",p:"Intra-abdominal sepsis → ceftriaxone + metronidazole.",why:"Ceftriaxone covers the enteric gram-negatives while metronidazole, a nitroimidazole that disrupts DNA in obligate anaerobes, assassinates Bacteroides fragilis — together they match the perforation flora. IDSA intra-abdominal guidance requires gram-negative plus anaerobe coverage for moderate-severe community infection. Metronidazole alone has no gram-negative activity; azithromycin-doxycycline is a respiratory regimen; oral vancomycin never leaves the gut lumen."},
+   {q:"TWIST — he drinks daily and won't abstain.",o:["Warn firmly: disulfiram-like reaction — no alcohol during + 72h after","It's a minor interaction","Switch to ciprofloxacin","Double the metronidazole"],a:0,e:"Disulfiram-like reaction: violent nausea, flushing, hypotension.",p:"Metronidazole + alcohol = disulfiram-like misery. No alcohol during + 48–72h after.",why:"Metronidazole inhibits aldehyde dehydrogenase, so ethanol metabolism stalls at acetaldehyde — producing violent nausea, flushing, tachycardia, and hypotension in a disulfiram-like reaction. The patient must abstain during therapy and for 48 to 72 hours after the last dose. Calling this interaction minor invites an emergency department visit; switching antibiotics solely for drinkability is poor stewardship when counseling suffices."},
+   {q:"OR cultures: Bacteroides fragilis + E. coli (ceftriaxone-S).",o:["Continue both — both pathogens need their coverage","Stop metronidazole now","Switch to oral azithromycin","Add vancomycin"],a:0,e:"Bacteroides needs its assassin; the regimen is already appropriately narrow.",p:"Continue targeted therapy against documented pathogens.",why:"Operative cultures documented exactly the two pathogen classes the regimen targets — ceftriaxone-susceptible E. coli and Bacteroides fragilis — so the empiric regimen is already appropriately narrow for perforation with peritonitis. Stopping metronidazole abandons the anaerobe; switching to azithromycin abandons both. With source control achieved, completing targeted therapy against documented pathogens is correct."}]}],
 /* ---- WING 3 : PHARMACY → ROOFTOP ---- */
 [{id:"p0",guide:"atypical",name:"Nina, 28",title:"walking pneumonia",x:500,
   talk:"Just this dry cough that won't quit — a week now. Low fever, headache. I can still work, mostly.",
   chart:"28F · T 37.9°C · PMH: none · Allergies: NKDA · Labs: WBC 10.8 · CXR: patchy infiltrates",
   steps:[
-   {q:"First move?",o:["Start empiric atypical coverage on clinical grounds","Blood cultures first","Amoxicillin","Wait another week"],a:0,e:"Walking pneumonia = clinical diagnosis; atypical coverage starts on suspicion.",p:"Walking pneumonia is a clinical diagnosis — treat on suspicion."},
-   {q:"Empiric antibiotic?",o:["Azithromycin","Amoxicillin","Ceftriaxone","Metronidazole"],a:0,e:"Atypical features warrant a macrolide; beta-lactams are ineffective against cell-wall-deficient Mycoplasma.",p:"No cell wall (Mycoplasma) → beta-lactams useless. Macrolide / doxy / respiratory FQ."},
-   {q:"TWIST — ECG: QTc 492 ms. Med list: simvastatin.",o:["Switch to doxycycline","Azithromycin anyway","Clarithromycin","IV erythromycin"],a:0,e:"QT prolongation + CYP3A4 substrate → dodge macrolides. Doxycycline covers atypicals.",p:"QT prolongation or CYP3A4 substrates → dodge macrolides; doxycycline covers atypicals."},
-   {q:"Legionella urinary antigen POSITIVE. She's on doxycycline.",o:["Continue doxycycline — it covers Legionella","Switch back to azithromycin","Add vancomycin","Stop antibiotics"],a:0,e:"Doxycycline covers Legionella too — the antigen confirms atypical, continue the current regimen.",p:"Doxycycline covers Legionella — positive antigen CONFIRMS, don't switch."}]},
+   {q:"First move?",o:["Start empiric atypical coverage on clinical grounds","Blood cultures first","Amoxicillin","Wait another week"],a:0,e:"Walking pneumonia = clinical diagnosis; atypical coverage starts on suspicion.",p:"Walking pneumonia is a clinical diagnosis — treat on suspicion.",why:"Walking pneumonia — dry cough, low-grade fever, patchy infiltrates — is Mycoplasma, Chlamydophila, or Legionella until proven otherwise, and it is a clinical diagnosis because serology and PCR return too slowly to guide initial therapy. Beta-lactams are useless against cell-wall-deficient Mycoplasma, so amoxicillin is a category error. Waiting another week risks progression; atypical coverage starts on suspicion."},
+   {q:"Empiric antibiotic?",o:["Azithromycin","Amoxicillin","Ceftriaxone","Metronidazole"],a:0,e:"Atypical features warrant a macrolide; beta-lactams are ineffective against cell-wall-deficient Mycoplasma.",p:"No cell wall (Mycoplasma) → beta-lactams useless. Macrolide / doxy / respiratory FQ.",why:"Azithromycin inhibits 50S protein synthesis and concentrates inside alveolar macrophages and lung tissue at levels far exceeding serum — precisely where intracellular atypical organisms replicate. Beta-lactams require a cell-wall target that Mycoplasma lacks. Ceftriaxone and metronidazole have no atypical activity; the macrolide is the mechanistically matched weapon."},
+   {q:"TWIST — ECG: QTc 492 ms. Med list: simvastatin.",o:["Switch to doxycycline","Azithromycin anyway","Clarithromycin","IV erythromycin"],a:0,e:"QT prolongation + CYP3A4 substrate → dodge macrolides. Doxycycline covers atypicals.",p:"QT prolongation or CYP3A4 substrates → dodge macrolides; doxycycline covers atypicals.",why:"A QTc of 492 ms plus a CYP3A4 substrate is a double red flag for macrolides: they prolong the QT interval toward torsades de pointes and inhibit CYP3A4, which would spike simvastatin levels toward rhabdomyolysis. Doxycycline inhibits 30S protein synthesis, covers all atypicals including Legionella, and carries neither the QT nor the CYP3A4 liability. Clarithromycin and erythromycin are worse on both counts."},
+   {q:"Legionella urinary antigen POSITIVE. She's on doxycycline.",o:["Continue doxycycline — it covers Legionella","Switch back to azithromycin","Add vancomycin","Stop antibiotics"],a:0,e:"Doxycycline covers Legionella too — the antigen confirms atypical, continue the current regimen.",p:"Doxycycline covers Legionella — positive antigen CONFIRMS, don't switch.",why:"Doxycycline covers Legionella pneumophila, so the positive urinary antigen confirms the atypical diagnosis and validates the QT-driven switch — the regimen is already correct. Switching back to azithromycin would reintroduce torsades and interaction risk for zero microbiologic gain. The antigen result is confirmation, not an indication to change."}]},
  {id:"p1",guide:"lyme",name:"Hiker, 34",title:"tick bite rash",x:1400,
   talk:"Fever five days, splitting headache, and this rash started on my wrists and ankles, spreading inward. Tick bite about ten days ago.",
   chart:"34F · T 39.0°C · centripetal rash · PMH: none · Allergies: NKDA",
   steps:[
-   {q:"First move?",o:["Start doxycycline immediately on clinical suspicion","Wait for RMSF serology","Amoxicillin","Supportive care only"],a:0,e:"RMSF is a clinical diagnosis — serology takes days the patient doesn't have.",p:"RMSF = CLINICAL diagnosis. Start doxycycline on suspicion."},
-   {q:"Weapon of choice?",o:["Doxycycline immediately","Amoxicillin","Wait for RMSF serology","Azithromycin"],a:0,e:"Classic RMSF — start doxycycline on suspicion.",p:"Suspected RMSF → doxycycline IMMEDIATELY, any age."},
-   {q:"TWIST — her 6-year-old son has identical symptoms.",o:["Doxycycline for him too — benefit outweighs teeth risk","Amoxicillin for kids","No antibiotics for children","Azithromycin"],a:0,e:"Doxycycline is the drug of choice for RMSF at any age.",p:"RMSF in kids → doxycycline REGARDLESS of age."},
-   {q:"Discharged on doxycycline. Key counseling?",o:["Upright with full water, sunscreen, finish the course","Take at bedtime","Take with milk and antacids","Stop when fever breaks on day 2"],a:0,e:"Esophagitis, photosensitivity, and adherence are the key counseling points.",p:"Doxycycline counseling: upright administration with water, sun protection, and course completion."}]},
+   {q:"First move?",o:["Start doxycycline immediately on clinical suspicion","Wait for RMSF serology","Amoxicillin","Supportive care only"],a:0,e:"RMSF is a clinical diagnosis — serology takes days the patient doesn't have.",p:"RMSF = CLINICAL diagnosis. Start doxycycline on suspicion.",why:"Rocky Mountain spotted fever kills, and serology takes days to weeks to turn positive — antibodies appear after the therapeutic window closes. Tick exposure with fever and a centripetal rash starting at wrists and ankles is a clinical diagnosis demanding immediate doxycycline. Amoxicillin cannot touch obligate intracellular Rickettsia; supportive care alone is fatal; waiting for serology is waiting for the autopsy."},
+   {q:"Weapon of choice?",o:["Doxycycline immediately","Amoxicillin","Wait for RMSF serology","Azithromycin"],a:0,e:"Classic RMSF — start doxycycline on suspicion.",p:"Suspected RMSF → doxycycline IMMEDIATELY, any age.",why:"Doxycycline inhibits 30S protein synthesis and penetrates host cells where Rickettsia rickettsii replicates as an obligate intracellular parasite. It is the CDC drug of choice for RMSF, and delayed therapy directly increases mortality. Amoxicillin and azithromycin are ineffective against Rickettsia; no alternative is acceptable."},
+   {q:"TWIST — her 6-year-old son has identical symptoms.",o:["Doxycycline for him too — benefit outweighs teeth risk","Amoxicillin for kids","No antibiotics for children","Azithromycin"],a:0,e:"Doxycycline is the drug of choice for RMSF at any age.",p:"RMSF in kids → doxycycline REGARDLESS of age.",why:"The historic teeth-staining concern does not survive contact with RMSF mortality — the CDC and AAP state doxycycline is the drug of choice for RMSF at any age, and short courses carry negligible staining risk. A child with suspected RMSF given amoxicillin instead of doxycycline faces a preventable death from a treatable disease. Benefit outweighs the theoretical dental risk absolutely."},
+   {q:"Discharged on doxycycline. Key counseling?",o:["Upright with full water, sunscreen, finish the course","Take at bedtime","Take with milk and antacids","Stop when fever breaks on day 2"],a:0,e:"Esophagitis, photosensitivity, and adherence are the key counseling points.",p:"Doxycycline counseling: upright administration with water, sun protection, and course completion.",why:"Doxycycline causes pill esophagitis — it must be taken upright with a full glass of water, never at bedtime — plus photosensitivity demanding sunscreen, and chelation by calcium, iron, magnesium, and antacids that guts absorption. Bedtime dosing invites esophageal ulceration; dairy and antacid co-administration wastes the dose. Completing the course prevents relapse."}]},
  {id:"p2",guide:"cdiff",name:"Edna, 78",title:"watery diarrhea after antibiotics",x:2200,
   talk:"Watery diarrhea for days — ever since those antibiotics for my tooth. My belly's cramping something awful.",
   chart:"78F · T 37.8°C · PMH: recent clindamycin course · Allergies: NKDA · Labs: WBC 13.0 · stool toxin pending",
   steps:[
-   {q:"First move?",o:["Stop the clindamycin + send stool toxin test","Continue clindamycin","Loperamide only","High-fiber diet"],a:0,e:"Suspected C. diff: stop the inciting antibiotic + test for toxins.",p:"Suspected C. diff → stop the inciting drug + test for toxins."},
-   {q:"Empiric therapy?",o:["Oral vancomycin","IV vancomycin","Metronidazole alone","Ciprofloxacin"],a:0,e:"Oral vancomycin stays in the gut lumen — perfect for C. diff.",p:"C. diff → ORAL vancomycin (stays in the lumen) or fidaxomicin."},
-   {q:"TWIST — toxin positive. She's also on a daily PPI.",o:["Review the PPI — PPIs raise C. diff risk; stop if not indicated","PPIs don't matter here","Double the PPI","Add antacids"],a:0,e:"PPIs raise C. difficile risk — deprescribe when not indicated.",p:"PPIs raise C. diff risk — deprescribe when not indicated."},
-   {q:"Day 3: improving, stools forming.",o:["Complete 10 days of oral vancomycin","Stop now — she feels better","Switch to IV vancomycin","Probiotics instead"],a:0,e:"C. diff = full 10-day course even when improving early.",p:"C. diff = 10 days even when improving early."}]}]
+   {q:"First move?",o:["Stop the clindamycin + send stool toxin test","Continue clindamycin","Loperamide only","High-fiber diet"],a:0,e:"Suspected C. diff: stop the inciting antibiotic + test for toxins.",p:"Suspected C. diff → stop the inciting drug + test for toxins.",why:"Clindamycin is the classic C. difficile precipitant — its anaerobic wipeout lets C. difficile spores germinate unchecked. Suspected C. difficile demands stopping the inciting antibiotic and sending stool toxin testing; continuing clindamycin fuels the fire. Loperamide alone risks toxic megacolon by slowing clearance of toxin; fiber is not therapy."},
+   {q:"Empiric therapy?",o:["Oral vancomycin","IV vancomycin","Metronidazole alone","Ciprofloxacin"],a:0,e:"Oral vancomycin stays in the gut lumen — perfect for C. diff.",p:"C. diff → ORAL vancomycin (stays in the lumen) or fidaxomicin.",why:"Oral vancomycin is negligibly absorbed, so it stays in the gut lumen achieving colonic concentrations that dwarf the MIC for C. difficile — it is a luminal weapon by pharmacokinetic design. Intravenous vancomycin does not reach the lumen in meaningful amounts and is a classic board-exam trap. Metronidazole is no longer first-line given inferior cure rates; ciprofloxacin causes C. difficile rather than treating it."},
+   {q:"TWIST — toxin positive. She's also on a daily PPI.",o:["Review the PPI — PPIs raise C. diff risk; stop if not indicated","PPIs don't matter here","Double the PPI","Add antacids"],a:0,e:"PPIs raise C. difficile risk — deprescribe when not indicated.",p:"PPIs raise C. diff risk — deprescribe when not indicated.",why:"Proton pump inhibitors raise gastric pH, improving C. difficile spore survival through the stomach, and are independently associated with increased infection and recurrence risk. Every PPI without a firm indication should be deprescribed in a C. difficile patient. Doubling the dose amplifies the risk; dismissing the interaction ignores the epidemiology."},
+   {q:"Day 3: improving, stools forming.",o:["Complete 10 days of oral vancomycin","Stop now — she feels better","Switch to IV vancomycin","Probiotics instead"],a:0,e:"C. diff = full 10-day course even when improving early.",p:"C. diff = 10 days even when improving early.",why:"C. difficile spores persist after symptoms improve, and truncated courses drive the 20 to 30 percent recurrence rate — IDSA specifies 10 days of oral vancomycin (or fidaxomicin) even with early improvement. Stopping at day 3 because stools are forming invites relapse; switching to intravenous vancomycin abandons the gut lumen where the organism lives."}]}]
 ];
 
 /* Resistance Council questions — verbatim */
@@ -318,7 +320,7 @@ var BUGS_UNLOCK={0:[0],1:[1],2:[2,3],3:[0,1,2,3,4]};
 
 /* ============ SAVE ============ */
 var SAVE_KEY="abx_nightshift_v1";
-function defSave(){return{xp:0,streak:0,bestStreak:0,wing:0,cur:0,hearts:5,pearls:[],bugs:[],bugsTaught:{},charms:[],patients:{},muted:false,flight:false,zoom:1,journal:{},lastPlayed:null,streakDays:0,xpToday:0,xpGoalDate:'',goalCelebratedDate:'',lastHeartTick:0,chestsClaimed:[],mistakes:[],w3done:false,streakAtRisk:false};}
+function defSave(){return{xp:0,streak:0,bestStreak:0,wing:0,cur:0,hearts:5,pearls:[],bugs:[],bugsTaught:{},charms:[],patients:{},muted:false,flight:false,zoom:1,journal:{},lastPlayed:null,streakDays:0,xpToday:0,xpGoalDate:'',goalCelebratedDate:'',lastHeartTick:0,chestsClaimed:[],mistakes:[],w3done:false,streakAtRisk:false,examBest:0};}
 var SV=defSave();
 var _hadZoom=false;
 try{var _raw=localStorage.getItem(SAVE_KEY);if(_raw){var _p=JSON.parse(_raw);_hadZoom=_p.zoom!==undefined;for(var _k in SV){if(_p[_k]!==undefined)SV[_k]=_p[_k];}}}catch(e){}
@@ -1419,9 +1421,11 @@ function renderQuiz(){
   var f=e.fb;
   if(f.ok){
    h+='<div class="banner good">✅ <b>Correct! +'+f.award+' XP</b><br>'+esc(f.explain)+'</div>';
+   if(f.why)h+='<div class="whybox">🧠 <b>Why this drug?</b><br>'+esc(f.why)+'</div>';
    h+='<div class="btnrow"><button class="btn" id="qNext">Continue →</button></div>';
   }else{
    h+='<div class="banner bad">❌ <b>Not quite.</b> '+(e.kind==='patient'?'The patient worsens… <b>attending pages you:</b>':'')+'<br>'+esc(f.explain)+'</div>';
+   if(f.why)h+='<div class="whybox">🧠 <b>Why this drug?</b><br>'+esc(f.why)+'</div>';
    h+='<div class="pearl">💎 <b>Clinical Pearl unlocked:</b><br>'+esc(f.pearl)+'</div>';
    if(e.kind==='patient'){
     var _gd=guideById(PATIENTS[e.wing][e.pi].guide);
@@ -1461,7 +1465,7 @@ function answerQuiz(i){
   if(e.kind==='patient'){
    award=awardCorrect()*cm;
    if(G.talkPatient){G.talkPatient.mood='sick';floatText(G.talkPatient.x,FLOOR-140,'+'+award+' XP'+(cm>1?' x'+cm:''),'#3ddc84');}
-   e.fb={ok:true,award:award,explain:Q.e};
+   e.fb={ok:true,award:award,explain:Q.e,why:Q.why};
   }else if(e.kind==='skirmish'){
    award=10*cm;earnXP(award);bumpStreak();
    var mn0=e.minion;
@@ -1471,7 +1475,7 @@ function answerQuiz(i){
      floatText(mn0.x,FLOOR-112,'+'+award+' XP','#ffd76a');sndGood();
     });}
    else burst(G.px,G.py-60,20,['#ffd76a','#fff']);
-   e.fb={ok:true,award:award,explain:Q.e};
+   e.fb={ok:true,award:award,explain:Q.e,why:Q.why};
   }else if(e.kind==='boss'){
    award=awardCorrect();G.bossHP--;
    var be=$('bossEmo');if(be){be.classList.remove('hurt');void be.offsetWidth;be.classList.add('hurt');}
@@ -1480,14 +1484,14 @@ function answerQuiz(i){
     burst(bwx,180,26,['#ff5d5d','#ffd76a']);
     floatText(bwx,118,'+'+award+' XP','#ffd76a');
    });
-   e.fb={ok:true,award:award,explain:Q.e};
+   e.fb={ok:true,award:award,explain:Q.e,why:Q.why};
   }else if(e.kind==='practice'){
    earnXP(5);award=5;
    if(SV.hearts<5){SV.hearts++;save();setTimeout(function(){mascotSay('+1 heart! Take care of yourself too.');},400);}
-   e.fb={ok:true,award:5,explain:Q.e};
+   e.fb={ok:true,award:5,explain:Q.e,why:Q.why};
   }else if(e.kind==='journal'){
    earnXP(20);bumpStreak();award=20;
-   e.fb={ok:true,award:20,explain:Q.e};
+   e.fb={ok:true,award:20,explain:Q.e,why:Q.why};
   }
  }else{
   sndBad();addShake(9);floatText(G.px,G.py-112,'-1 ❤','#ff5d5d');
@@ -1495,13 +1499,13 @@ function answerQuiz(i){
   resetStreak();
   e.mistakes=(e.mistakes||0)+1;
   unlockPearl(e.pid);
-  logMistake({q:Q.q,o:Q.o,a:Q.a,e:Q.e,p:Q.p,pid:e.pid});
+  logMistake({q:Q.q,o:Q.o,a:Q.a,e:Q.e,p:Q.p,why:Q.why,pid:e.pid});
   setTimeout(function(){mascotSay(pick(MASCOT.mistake));},300);
   if(e.kind==='patient'&&G.talkPatient){G.talkPatient.mood='worse';G.vignette=1;}
   if(e.kind==='skirmish'&&e.minion)e.minion.used=true; /* stunned */
   save();
   if(SV.hearts<=0){outOfHearts();return;}
-  e.fb={ok:false,explain:Q.e,pearl:Q.p};
+  e.fb={ok:false,explain:Q.e,pearl:Q.p,why:Q.why};
  }
  renderQuiz();
 }
@@ -1593,7 +1597,19 @@ function shuffleArr(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.rando
 function prepQ(q){
  var idx=q.o.map(function(_,i){return i;});
  shuffleArr(idx);
- return {q:q.q,o:idx.map(function(i){return q.o[i];}),a:idx.indexOf(q.a),e:q.e,p:q.p};
+ return {q:q.q,o:idx.map(function(i){return q.o[i];}),a:idx.indexOf(q.a),e:q.e,p:q.p,why:q.why};
+}
+function bugWhy(b){
+ var mech={'Beta-lactams':'bind penicillin-binding proteins and block peptidoglycan cross-linking, causing osmotic lysis with time-dependent killing',
+ 'Glycopeptides':'bind D-ala-D-ala and block cell-wall synthesis — the answer when beta-lactams cannot bind their target (MRSA, ampicillin-resistant enterococci)',
+ 'Macrolides':'inhibit 50S protein synthesis and concentrate inside host cells, built for intracellular and atypical organisms',
+ 'Fluoroquinolones':'inhibit DNA gyrase and topoisomerase IV with concentration-dependent killing and superb tissue penetration',
+ 'Aminoglycosides':'inhibit 30S protein synthesis with concentration-dependent bactericidal killing, synergistic with beta-lactams against gram-negatives',
+ 'Tetracyclines':'inhibit 30S protein synthesis and penetrate host cells to reach intracellular organisms such as Rickettsia and atypicals',
+ 'TMP-SMX':'blocks folate synthesis at two sequential steps; a classic for UTIs and community MRSA skin infections',
+ 'Metronidazole':'disrupts DNA in obligate anaerobes — the Bacteroides and C. difficile assassin',
+ 'Antimycobacterials':'mycobacteria demand multi-drug combination therapy to prevent resistance; no single agent is ever enough'}[b.hunt]||'targeted therapy per susceptibilities';
+ return b.name+' ('+b.site+') is killed by '+b.hunt+' — '+b.killed+'. Mechanistically, '+b.hunt.toLowerCase()+' '+mech+'. Morphology clue: '+b.morph+'. Inpatient: '+b.dose+'.';
 }
 function bugQuiz(bug){
  var hunts=[];for(var i=0;i<BUGS.length;i++)if(hunts.indexOf(BUGS[i].hunt)<0)hunts.push(BUGS[i].hunt);
@@ -1606,7 +1622,7 @@ function bugQuiz(bug){
   shuffleArr(opts);
   return{q:'What drug class kills '+bug.emoji+' '+bug.name+'?',o:opts,a:opts.indexOf(bug.hunt),
    e:bug.name+' is killed by '+bug.hunt+': '+bug.killed+'.',
-   p:'BUG FILE: '+bug.name+' → '+bug.hunt+' ('+bug.killed+').'};
+   p:'BUG FILE: '+bug.name+' → '+bug.hunt+' ('+bug.killed+').',why:bugWhy(bug)};
  }else if(roll<0.67){
   /* which bug causes this? */
   var on2=[bug.name];
@@ -1614,7 +1630,7 @@ function bugQuiz(bug){
   shuffleArr(on2);
   return{q:'Which bug is this?\n"'+bug.clue+'"',o:on2,a:on2.indexOf(bug.name),
    e:'That\'s '+bug.name+'. Treat with: '+bug.killed+'.',
-   p:'BUG FILE: "'+bug.clue+'" → '+bug.name+'.'};
+   p:'BUG FILE: "'+bug.clue+'" → '+bug.name+'.',why:bugWhy(bug)};
  }else{
   /* body site */
   var os=[bug.site];
@@ -1622,7 +1638,7 @@ function bugQuiz(bug){
   shuffleArr(os);
   return{q:'Where is '+bug.emoji+' '+bug.name+' classically found?',o:os,a:os.indexOf(bug.site),
    e:bug.name+' → '+bug.site+'. Treat with: '+bug.killed+'.',
-   p:'BUG FILE: '+bug.name+' lives in: '+bug.site+'.'};
+   p:'BUG FILE: '+bug.name+' lives in: '+bug.site+'.',why:bugWhy(bug)};
  }
 }
 
@@ -2127,21 +2143,21 @@ function genQuestion(){
  if(t===0){
   var mo=mkOpts(b.hunt,hunts);
   qd={q:'What drug class kills '+b.emoji+' '+b.name+'?',o:mo.o,a:mo.a,
-   e:b.name+' → '+b.hunt+': '+b.killed+'.',p:'GEN: '+b.name+' → '+b.hunt};
+   e:b.name+' → '+b.hunt+': '+b.killed+'.',p:'GEN: '+b.name+' → '+b.hunt,why:bugWhy(b)};
  }else if(t===1){
   var mo2=mkOpts(b.name,names);
   qd={q:'Which bug causes this?\n"'+b.clue+'"',o:mo2.o,a:mo2.a,
-   e:b.name+'. Treat: '+b.killed+'.',p:'GEN: cause → '+b.name};
+   e:b.name+'. Treat: '+b.killed+'.',p:'GEN: cause → '+b.name,why:bugWhy(b)};
  }else if(t===2){
   var mo3=mkOpts(b.site,sites);
   qd={q:b.emoji+' '+b.name+' is classically found where?',o:mo3.o,a:mo3.a,
-   e:b.site+' — treat with '+b.killed+'.',p:'GEN: site → '+b.name};
+   e:b.site+' — treat with '+b.killed+'.',p:'GEN: site → '+b.name,why:bugWhy(b)};
  }else if(t===3){
   /* true/false */
   var isTrue=Math.random()<0.5;
   var claim=isTrue?b.hunt:pick(hunts.filter(function(h){return h!==b.hunt;}));
   qd={q:'True or false?\n"'+b.name+' is treated with '+claim+'."',o:['True','False'],a:isTrue?0:1,
-   e:b.name+' → '+b.hunt+'.',p:'GEN: T/F '+b.name};
+   e:b.name+' → '+b.hunt+'.',p:'GEN: T/F '+b.name,why:bugWhy(b)};
  }else if(t===4){
   /* which of these is killed by X? (distractors are NOT) */
   var killers=BUGS.filter(function(x){return x.hunt===b.hunt&&x.id!==b.id;});
@@ -2149,20 +2165,20 @@ function genQuestion(){
   var notK=BUGS.filter(function(x){return x.hunt!==b.hunt;}).map(function(x){return x.name;});
   var mo4=mkOpts(correct,notK);
   qd={q:'Which of these is killed by '+b.hunt+'?',o:mo4.o,a:mo4.a,
-   e:correct+' → '+b.hunt+'.',p:'GEN: hunt → bug'};
+   e:correct+' → '+b.hunt+'.',p:'GEN: hunt → bug',why:bugWhy(b)};
  }else if(t===5){
   /* trait → bug */
   var tr=pick(b.traits);
   var mo5=mkOpts(b.name,names);
   qd={q:'Which bug?\n"'+tr+'"',o:mo5.o,a:mo5.a,
-   e:b.name+'. Treat: '+b.killed+'.',p:'GEN: trait → '+b.name};
+   e:b.name+'. Treat: '+b.killed+'.',p:'GEN: trait → '+b.name,why:bugWhy(b)};
  }else{
   /* NOT: which is NOT treated by X (only when the hunt has enough bugs) */
   var sameHunt6=BUGS.filter(function(x){return x.hunt===b.hunt;});
   if(sameHunt6.length<4){
    var mo6=mkOpts(b.hunt,hunts);
    qd={q:'What drug class kills '+b.emoji+' '+b.name+'?',o:mo6.o,a:mo6.a,
-    e:b.name+' → '+b.hunt+': '+b.killed+'.',p:'GEN: '+b.name+' → '+b.hunt};
+    e:b.name+' → '+b.hunt+': '+b.killed+'.',p:'GEN: '+b.name+' → '+b.hunt,why:bugWhy(b)};
   }else{
    var notBugs=BUGS.filter(function(x){return x.hunt!==b.hunt;});
    var notB=pick(notBugs);
@@ -2170,7 +2186,7 @@ function genQuestion(){
    while(o6.length<4){var sh=pick(sameHunt6);if(o6.indexOf(sh.name)<0)o6.push(sh.name);}
    shuffleArr(o6);
    qd={q:'Which is NOT treated by '+b.hunt+'?',o:o6,a:o6.indexOf(notB.name),
-    e:notB.name+' is not killed by '+b.hunt+'.',p:'GEN: NOT '+b.hunt};
+    e:notB.name+' is not killed by '+b.hunt+'.',p:'GEN: NOT '+b.hunt,why:bugWhy(notB)};
   }
  }
  qd.pid='gen'+b.id+'t'+t+'r'+Math.floor(Math.random()*1e6);
@@ -2249,6 +2265,126 @@ function blitzDone(){
   '<button class="btn ghost" id="bBack">Menu</button></div>');
  on('bAgain',function(){sndClick();startBlitz();});
  on('bBack',function(){sndClick();renderPause();});
+}
+/* ============ 📝 ID EXAM MODE: 20 timed board-style vignettes ============ */
+var EXAM_BANK=[
+{topic:"Endocarditis",q:"55-year-old, native mitral valve endocarditis, MSSA bacteremia, no heart failure or emboli. Definitive therapy?",o:["Nafcillin 2g IV q4h × 6 weeks","Vancomycin × 2 weeks","Daptomycin × 6 weeks","Ceftriaxone × 6 weeks"],a:0,
+ e:"Native-valve MSSA endocarditis: anti-staphylococcal beta-lactam × 6 weeks.",p:"EXAM: MSSA endocarditis = nafcillin/cefazolin × 6 weeks. Beta-lactams beat vancomycin for MSSA.",
+ why:"For MSSA endocarditis, anti-staphylococcal beta-lactams (nafcillin, oxacillin, cefazolin) are superior to vancomycin — faster bacteremia clearance and lower mortality in every comparative study, because beta-lactam PBP binding kills MSSA more rapidly than vancomycin's D-ala-D-ala blockade. AHA guidelines specify 6 weeks of a beta-lactam for uncomplicated native-valve MSSA endocarditis. Two weeks is the duration for uncomplicated bacteremia, not endocarditis; daptomycin is a fallback for beta-lactam allergy, not the drug of choice; ceftriaxone lacks reliable anti-staphylococcal activity."},
+{topic:"Endocarditis",q:"Prosthetic aortic valve endocarditis, MRSA isolated. Initial regimen per AHA?",o:["Vancomycin + rifampin + gentamicin","Vancomycin alone","Rifampin alone","Nafcillin + gentamicin"],a:0,
+ e:"Prosthetic-valve MRSA endocarditis: vancomycin + rifampin (biofilm) + gentamicin × 2 weeks.",p:"EXAM: prosthetic valve MRSA endocarditis = vanco + rifampin + gentamicin. Rifampin never alone.",
+ why:"Prosthetic-valve MRSA endocarditis involves biofilm on foreign material, so AHA recommends vancomycin plus rifampin — which penetrates biofilm and kills adherent staphylococci — plus gentamicin for the first 2 weeks for synergy. Rifampin must never be used alone or added before bacteremia clears, because single-step resistance emerges within days. Vancomycin alone cannot sterilize prosthetic biofilm; nafcillin cannot bind MRSA's PBP2a."},
+{topic:"Febrile neutropenia",q:"ANC 180, febrile to 39.1°C, hypotensive. No MRSA history. Empiric therapy?",o:["Cefepime 2g IV q8h","Vancomycin alone","Ciprofloxacin PO","Ceftriaxone"],a:0,
+ e:"Febrile neutropenia + hypotension: immediate anti-pseudomonal beta-lactam monotherapy.",p:"EXAM: febrile neutropenia = anti-pseudomonal beta-lactam NOW (cefepime/pip-tazo/meropenem). Vanco only with MRSA risk.",
+ why:"Febrile neutropenia with hypotension is a Pseudomonas emergency — IDSA mandates immediate anti-pseudomonal beta-lactam monotherapy (cefepime, piperacillin-tazobactam, or meropenem), because Pseudomonas bacteremia kills neutropenic patients in hours. Vancomycin is added only with specific MRSA risk factors (prior colonization, catheter infection, skin source), not reflexively. Oral ciprofloxacin is prophylaxis, not treatment of septic shock; ceftriaxone has no Pseudomonas activity."},
+{topic:"Tuberculosis",q:"Drug-susceptible pulmonary TB, adherent adult. Standard regimen?",o:["2 months RIPE, then 4 months rifampin + isoniazid","Isoniazid alone × 9 months","RIPE × 2 months then stop","Rifampin alone × 6 months"],a:0,
+ e:"Standard TB therapy: 2HRZE/4HR — four drugs intensive, two drugs continuation.",p:"EXAM: TB = 2 months RIPE then 4 months RI. Never single-drug therapy.",
+ why:"Standard drug-susceptible TB therapy is 2 months of rifampin, isoniazid, pyrazinamide, and ethambutol (intensive phase) followed by 4 months of rifampin plus isoniazid (continuation) — 2HRZE/4HR. Four drugs initially prevent selection of resistant mutants; single-drug therapy guarantees resistance. Stopping after the intensive phase invites relapse; directly observed therapy is the standard of care."},
+{topic:"Antifungals",q:"Candidemia, Candida albicans fluconazole-susceptible, clinically stable, line removed. Step-down?",o:["Fluconazole 800mg load, then 400mg daily","Continue micafungin indefinitely","Amphotericin B","Stop antifungals now"],a:0,
+ e:"Candidemia: start echinocandin, step down to fluconazole once susceptible and stable.",p:"EXAM: candidemia = echinocandin first, step down to fluconazole if susceptible + stable.",
+ why:"IDSA candidemia guidance starts an echinocandin (fungicidal, broad Candida coverage) then steps down to fluconazole once the isolate is confirmed susceptible and the patient is stable — fluconazole's excellent bioavailability and narrow toxicity make it the ideal continuation agent. Continuing micafungin indefinitely wastes resources without benefit; amphotericin B is reserved for resistant or unstable disease given nephrotoxicity; stopping therapy with documented candidemia invites relapse and metastatic seeding."},
+{topic:"Antifungals",q:"Prolonged neutropenia, halo sign on CT, galactomannan positive. First-line therapy?",o:["Voriconazole","Fluconazole","Amphotericin B deoxycholate","Micafungin alone"],a:0,
+ e:"Invasive aspergillosis: voriconazole first-line (Herbrecht trial).",p:"EXAM: invasive aspergillosis = voriconazole. Fluconazole has no Aspergillus activity.",
+ why:"Voriconazole is first-line for invasive aspergillosis — the Herbrecht trial showed superior response and survival versus amphotericin B deoxycholate. It requires therapeutic drug monitoring and vigilance for CYP-mediated interactions, visual disturbances, and hepatotoxicity. Fluconazole has no Aspergillus activity; deoxycholate amphotericin is more toxic and less effective; echinocandin monotherapy is salvage, not primary, therapy."},
+{topic:"Surgical prophylaxis",q:"Elective colon surgery, no allergy. Optimal prophylaxis?",o:["Cefazolin within 60 min before incision; redose q4h intraop","Cefazolin the night before","Vancomycin × 5 days post-op","No antibiotics needed"],a:0,
+ e:"Surgical prophylaxis: bactericidal tissue levels at incision — cefazolin within 60 min.",p:"EXAM: surgical prophylaxis = cefazolin within 60 min of incision. Post-op courses do not help.",
+ why:"Surgical prophylaxis works by having bactericidal tissue levels at the moment of incision — cefazolin within 60 minutes before the cut, redosed every 4 hours during long cases to stay above the MIC. Dosing the night before leaves subtherapeutic levels at incision; prolonged post-operative courses do not reduce surgical site infections and drive resistance. Vancomycin is reserved for MRSA colonization or beta-lactam anaphylaxis."},
+{topic:"HIV OIs",q:"CD4 35, subacute headache, cryptococcal meningitis confirmed. Induction therapy?",o:["Liposomal amphotericin B + flucytosine × 2 weeks","Fluconazole alone","Amphotericin B alone indefinitely","Acyclovir"],a:0,
+ e:"Cryptococcal meningitis induction: liposomal amphotericin B + flucytosine.",p:"EXAM: crypto meningitis induction = ampho B + flucytosine, then fluconazole consolidation/maintenance.",
+ why:"IDSA cryptococcal meningitis induction is liposomal amphotericin B plus flucytosine — the combination achieves faster CSF sterilization and lower mortality than amphotericin alone, and fluconazole alone is inferior for induction with higher relapse. Induction is followed by fluconazole consolidation then maintenance until immune reconstitution. Acyclovir treats herpesviruses, not fungi."}
+];
+/* one high-yield step per patient: [wing,patient,step,topic] */
+var EXAM_PICKS=[[0,0,2,"Pneumonia"],[0,1,1,"UTI"],[0,2,2,"Skin/soft tissue"],[1,0,1,"UTI"],[1,1,1,"Skin/soft tissue"],[1,2,1,"Sepsis"],[2,0,3,"Bacteremia"],[2,1,2,"CNS"],[2,2,1,"Intra-abdominal"],[3,0,2,"Pneumonia"],[3,1,1,"Tick-borne"],[3,2,1,"C. difficile"]];
+function startExam(){
+ var list=[];
+ EXAM_PICKS.forEach(function(pk){
+  var st=PATIENTS[pk[0]][pk[1]].steps[pk[2]];
+  var q=prepQ(st);q.topic=pk[3];list.push(q);
+ });
+ EXAM_BANK.forEach(function(b){
+  var q=prepQ(b);q.topic=b.topic;list.push(q);
+ });
+ shuffleArr(list);
+ G.enc={kind:'exam',list:list,idx:0,correct:0,byTopic:{},tLeft:90,fb:null,review:[]};
+ G.combo=0;G.mode='exam';setPauseBtn(false);
+ renderExamQ();
+ if(G.examTimer)clearInterval(G.examTimer);
+ G.examTimer=setInterval(examTick,1000);
+}
+function examTick(){
+ var e=G.enc;
+ if(!e||e.kind!=='exam'){if(G.examTimer){clearInterval(G.examTimer);G.examTimer=null;}return;}
+ if(e.fb)return;
+ e.tLeft-=1;
+ var te=document.getElementById('examTime');
+ if(te){te.textContent=e.tLeft+'s';te.style.color=e.tLeft<=10?'#ff5d5d':'#ffd76a';}
+ var bar=document.getElementById('examBar');
+ if(bar)bar.style.width=Math.max(0,e.tLeft/90*100)+'%';
+ if(e.tLeft<=0)answerExam(-1);
+}
+function renderExamQ(){
+ var e=G.enc;if(!e||e.kind!=='exam')return;
+ var it=e.list[e.idx];
+ var h='<div class="card"><span style="font-size:14px;color:#9db8e8">📝 ID EXAM · '+(e.idx+1)+'/'+e.list.length+' · ⏱ <span id="examTime" style="color:#ffd76a">'+e.tLeft+'s</span> · '+esc(it.topic)+'</span>'+
+  '<div style="height:6px;background:#1a2340;border-radius:3px;margin:8px 0"><div id="examBar" style="height:100%;width:'+(e.tLeft/90*100)+'%;background:#7b9cf0;border-radius:3px"></div></div>';
+ if(e.fb){
+  h+='<div class="q">'+esc(it.q)+'</div>';
+  h+='<div class="banner '+(e.fb.ok?'good':'bad')+'">'+(e.fb.ok?'✅ <b>Correct! +10 XP</b>':'❌ <b>Not quite.</b> Correct answer: <b>'+esc(it.o[it.a])+'</b>')+'<br>'+esc(it.e)+'</div>';
+  if(it.why)h+='<div class="whybox">🧠 <b>Why this drug?</b><br>'+esc(it.why)+'</div>';
+  h+='<div class="btnrow"><button class="btn" id="xNext">'+(e.idx+1>=e.list.length?'See results →':'Next →')+'</button></div>';
+ }else{
+  h+='<div class="q">'+esc(it.q)+'</div><div class="opts">';
+  for(var i=0;i<it.o.length;i++)h+='<button class="opt" data-i="'+i+'">'+esc(it.o[i])+'</button>';
+  h+='</div>';
+ }
+ h+='</div>';show(h);
+ if(e.fb){on('xNext',function(){sndClick();examNext();});}
+ else{
+  var opts=document.querySelectorAll('.opt');
+  for(var k=0;k<opts.length;k++)(function(el){
+   el.addEventListener('click',function(){answerExam(+el.getAttribute('data-i'));});
+  })(opts[k]);
+ }
+}
+function answerExam(i){
+ var e=G.enc;if(!e||e.kind!=='exam'||e.fb)return;
+ if(G.examTimer){clearInterval(G.examTimer);G.examTimer=null;}
+ var it=e.list[e.idx],ok=(i===it.a),t=it.topic;
+ e.byTopic[t]=e.byTopic[t]||{c:0,n:0};e.byTopic[t].n++;
+ if(ok){e.correct++;e.byTopic[t].c++;sndGood();earnXP(10);}else{sndBad();}
+ e.review.push({q:it.q,o:it.o,a:it.a,you:i,ok:ok,e:it.e,why:it.why,topic:t});
+ e.fb={ok:ok};
+ renderExamQ();
+}
+function examNext(){
+ var e=G.enc;if(!e||e.kind!=='exam')return;
+ e.fb=null;e.tLeft=90;e.idx++;
+ if(e.idx>=e.list.length){examDone();return;}
+ renderExamQ();
+ if(G.examTimer)clearInterval(G.examTimer);
+ G.examTimer=setInterval(examTick,1000);
+}
+function examDone(){
+ var e=G.enc;
+ if(G.examTimer){clearInterval(G.examTimer);G.examTimer=null;}
+ var n=e.list.length,c=e.correct,pct=Math.round(c/n*100);
+ if(!SV.examBest||pct>SV.examBest){SV.examBest=pct;save();}
+ var h='<div class="card titlecard"><div style="font-size:56px">📝</div><h2>ID Exam complete!</h2>'+
+  '<p style="font-size:26px"><b>'+c+'/'+n+'</b> ('+pct+'%)</p>'+
+  '<p>🏆 Best: '+(SV.examBest||pct)+'%</p><h3>Score by topic</h3><div class="list">';
+ var topics=Object.keys(e.byTopic).sort();
+ topics.forEach(function(t){var b=e.byTopic[t],p2=Math.round(b.c/b.n*100);
+  h+='<div class="pearlitem">📝 <b>'+esc(t)+':</b> '+b.c+'/'+b.n+' ('+p2+'%)</div>';});
+ h+='</div><h3>Review — every question</h3><div class="list">';
+ e.review.forEach(function(r,i){
+  h+='<div class="'+(r.ok?'pearlitem':'pearlitem locked')+'"><b>Q'+(i+1)+' ['+esc(r.topic)+']</b> '+(r.ok?'✅':'❌')+'<br>'+esc(r.q)+
+  '<br>Correct: <b>'+esc(r.o[r.a])+'</b>'+(r.ok?'':'<br><i>You: '+esc(r.you>=0?r.o[r.you]:'(timed out)')+'</i>')+
+  (r.why?'<br><br>🧠 <b>Why:</b> '+esc(r.why):'')+'</div>';
+ });
+ h+='</div><div class="btnrow"><button class="btn" id="xRetry">🔁 Retake exam</button> <button class="btn ghost" id="xBack">← Pause menu</button></div></div>';
+ show(h);setPauseBtn(true);
+ on('xRetry',function(){sndClick();startExam();});
+ on('xBack',function(){sndClick();G.mode='pause';renderPause();});
 }
 /* ============ 💀 SURVIVAL: 3 hearts, how far can you go? ============ */
 function startSurvival(){
@@ -2344,6 +2480,7 @@ function renderPause(){
   '<button class="btn ghost" id="mBlitz">🔥 Blitz'+(SV.blitzBest?' ('+SV.blitzBest+')':'')+'</button>'+
   '<button class="btn ghost" id="mSurv">💀 Survival'+(SV.survBest?' ('+SV.survBest+')':'')+'</button>'+
   '<button class="btn ghost" id="mDose">💊 Dosing Drill</button>'+
+  '<button class="btn ghost" id="mExam">📝 ID Exam'+(SV.examBest?' ('+SV.examBest+'%)':'')+'</button>'+
   '<button class="btn ghost" id="mFlight">'+(SV.flight?'✈️ Flight: ON':'✈️ Flight: OFF')+'</button>'+
   '<button class="btn ghost" id="mPath">🗺️ Path</button>'+
   '<button class="btn ghost" id="mControls">🎮 Controls</button>'+
@@ -2361,6 +2498,7 @@ function renderPause(){
  on('mBlitz',function(){sndClick();startBlitz();});
  on('mSurv',function(){sndClick();startSurvival();});
  on('mDose',function(){sndClick();startDosing();});
+ on('mExam',function(){sndClick();startExam();});
  on('mFlight',function(){SV.flight=!SV.flight;save();sndClick();renderPause();
   toast(SV.flight?'✈️ Flight mode ON — 30fps, dimmed, easy on battery':'✈️ Flight mode OFF');});
  on('mPath',function(){sndClick();renderPath();});
